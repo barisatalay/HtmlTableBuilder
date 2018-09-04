@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Html Table Builder Example</string>
+    <string name="id">Stock ID</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
+    <string name="create_date">Create Date</string>
+</resources>
