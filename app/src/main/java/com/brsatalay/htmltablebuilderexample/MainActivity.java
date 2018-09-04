@@ -15,12 +15,11 @@ import com.brsatalay.htmltablebuilder.model.mdlGridCell;
 import com.brsatalay.htmltablebuilder.model.mdlHeaderCell;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity implements HtmlTableBuilderListener {
+public class MainActivity extends AppCompatActivity {
 
     private WebView webView;
     @Override
@@ -36,17 +35,34 @@ public class MainActivity extends AppCompatActivity implements HtmlTableBuilderL
         tableBuilder.setHeaderInfos(prepareHeaders());
         tableBuilder.setFooterInfos(prepareFooterList());
         tableBuilder.setDataSet(prepareDataSet());
-        tableBuilder.setListener(this);
+        tableBuilder.setListener(new HtmlTableBuilderListener() {
+            @Override
+            public void onDrawCell(int dataIndex, mdlGridCell cell) {
+                boolean isMoneyCol = cell.getValueType() == enmCellValueType.Decimal;
+
+                if ((dataIndex % 2) == 0){
+                    cell.setBackgroundColor(!isMoneyCol ? "#F2F7FF" : "#B3D1B3");
+                }else if (!isMoneyCol)
+                    cell.setBackgroundColor("white");
+                else
+                    cell.setBackgroundColor("#C0DCC0");
+            }
+
+            @Override
+            public void onDrawColumnHeader(int dataIndex, mdlGridCell cell) {
+
+            }
+
+            @Override
+            public void onCalcFields(int rowIndex, LinkedHashMap<String, mdlGridCell> rowData) {
+
+            }
+        });
         String htmlPath = tableBuilder.build("table.html");
 
 
-//        webView.getSettings().setAllowFileAccess(true);
-//
-//        webView.clearCache(true);
-//        webView.clearHistory();
-//        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setDisplayZoomControls(false);
-//        webView.getSettings().setSaveFormData(true);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 
@@ -58,70 +74,70 @@ public class MainActivity extends AppCompatActivity implements HtmlTableBuilderL
         Stock stock = new Stock();
         stock.setId(1);
         stock.setName("Pencil");
-        stock.setPrice(getRandomDouble());//new Double(534534.05));
+        stock.setPrice(getRandomDouble());
         stock.setCrtDate("2018-07-15T22:55:00");
         result.add(stock);
 
         stock = new Stock();
         stock.setId(2);
         stock.setName("Notebook");
-        stock.setPrice(new Double(154562.75));
+        stock.setPrice(getRandomDouble());
         stock.setCrtDate("2018-06-11T12:32:00");
         result.add(stock);
 
         stock = new Stock();
         stock.setId(3);
         stock.setName("Umbrella");
-        stock.setPrice(new Double(34123.00));
+        stock.setPrice(getRandomDouble());
         stock.setCrtDate("2018-04-30T08:07:00");
         result.add(stock);
 
         stock = new Stock();
         stock.setId(4);
         stock.setName("Headphones");
-        stock.setPrice(new Double(11231234.06));
+        stock.setPrice(getRandomDouble());
         stock.setCrtDate("2018-05-25T17:30:00");
         result.add(stock);
 
         stock = new Stock();
         stock.setId(5);
         stock.setName("Table");
-        stock.setPrice(new Double(567434.06));
+        stock.setPrice(getRandomDouble());
         stock.setCrtDate("2018-03-11T17:30:00");
         result.add(stock);
 
         stock = new Stock();
         stock.setId(6);
         stock.setName("Monitor");
-        stock.setPrice(new Double(8347521578.99));
+        stock.setPrice(getRandomDouble());
         stock.setCrtDate("2017-01-01T08:30:00");
         result.add(stock);
 
         stock = new Stock();
         stock.setId(7);
         stock.setName("Cellphone");
-        stock.setPrice(new Double(11231234.06));
+        stock.setPrice(getRandomDouble());
         stock.setCrtDate("2016-05-25T17:30:00");
         result.add(stock);
 
         stock = new Stock();
         stock.setId(8);
         stock.setName("Coffe");
-        stock.setPrice(new Double(11231234.06));
+        stock.setPrice(getRandomDouble());
         stock.setCrtDate("2017-04-23T17:30:00");
         result.add(stock);
 
         stock = new Stock();
         stock.setId(9);
         stock.setName("Glass");
-        stock.setPrice(new Double(11231234.06));
+        stock.setPrice(getRandomDouble());
         stock.setCrtDate("2020-08-08T17:30:00");
         result.add(stock);
 
         stock = new Stock();
         stock.setId(10);
         stock.setName("Desk");
-        stock.setPrice(new Double(11231234.06));
+        stock.setPrice(getRandomDouble());
         stock.setCrtDate("2019-12-07T17:30:00");
         result.add(stock);
 
@@ -129,8 +145,8 @@ public class MainActivity extends AppCompatActivity implements HtmlTableBuilderL
     }
 
     private Double getRandomDouble(){
-        double start = 112313321.99;
-        double end =   987989879879.99;
+        double start = 11231321.99;
+        double end =   98989879879.99;
         double random = new Random().nextDouble();
         return start + (random * (end - start));
     }
@@ -185,27 +201,5 @@ public class MainActivity extends AppCompatActivity implements HtmlTableBuilderL
                 .width(110)
                 .build());
         return headerInfos;
-    }
-
-    @Override
-    public void onDrawCell(int dataIndex, mdlGridCell cell) {
-        boolean isMoneyCol = cell.getValueType() == enmCellValueType.Decimal;
-
-        if ((dataIndex % 2) == 0){
-            cell.setBackgroundColor(!isMoneyCol ? "#F2F7FF" : "#B3D1B3");
-        }else if (!isMoneyCol)
-            cell.setBackgroundColor("white");
-        else
-            cell.setBackgroundColor("#C0DCC0");
-    }
-
-    @Override
-    public void onDrawColumnHeader(int dataIndex, mdlGridCell cell) {
-
-    }
-
-    @Override
-    public void onCalcFields(int rowIndex, LinkedHashMap<String, mdlGridCell> rowData) {
-
     }
 }
