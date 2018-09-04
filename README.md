@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/barisatalay/HtmlTableBuilder.svg)](https://jitpack.io/#barisatalay/HtmlTableBuilder)
+
 # Html Table Builder
 Report Table for Android Projects
 
@@ -30,7 +32,7 @@ allprojects {
 Add dependencies in build.gradle.
 ```groovy
 dependencies {
-   
+   implementation 'com.github.barisatalay:HtmlTableBuilder:1.0'
 }
 ```
 
