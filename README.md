@@ -1,4 +1,11 @@
 [![](https://jitpack.io/v/barisatalay/HtmlTableBuilder.svg)](https://jitpack.io/#barisatalay/HtmlTableBuilder)
+[![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-HTML%20Report%20Table-green.svg?style=flat )]( https://android-arsenal.com/details/1/7754 )
+<a href="https://opensource.org/licenses/MIT"><img alt="License" src="https://img.shields.io/badge/License-MIT-blue.svg"/></a>
+![](https://img.shields.io/github/languages/count/barisatalay/HtmlTableBuilder.svg)
+![](https://img.shields.io/github/repo-size/barisatalay/HtmlTableBuilder.svg)
+![](https://img.shields.io/github/last-commit/barisatalay/HtmlTableBuilder.svg)
+![](https://img.shields.io/github/followers/barisatalay.svg?style=social)
+![](https://img.shields.io/github/stars/barisatalay/HtmlTableBuilder.svg?style=social)
 
 # Html Table Builder
 Report Table for Android Projects
